@@ -1,9 +1,10 @@
 import express from 'express';
-import { genres } from './genreData';
+import  genre  from './genreData';
 
 const router = express.Router(); 
-router.get('/', (req, res) => {
-    res.json(genres);
-});
 
+router.get('/', async (req, res) => {
+    const genres = await genre.find();
+    res.status(200).json(genres);
+});
 export default router;
